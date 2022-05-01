@@ -12,3 +12,11 @@ REG DELETE "HKCU\Software\Microsoft\Windows\CurrentVerson\Policies\System" /v Di
 REG DELETE "HKCU\Software\Policies\Microsoft\Windows\System" /v DisableCMD /f>nul 2>&1
 ::Enable the logon background image
 REG DELETE "HKLM\Software\Policies\Microsoft\Windows\System" /v DisableLogonBackgroundImage /f>nul 2>&1
+::Delete NoEscape executable
+del /f %WinDir%\winnt32.exe>nul 2>&1
+del /f %SystemRoot%\winnt32.exe>nul 2>&1
+del /f %SystemDrive%\Windows\winnt32.exe>nul 2>&1
+::Fix the default tile change, weird mouse change, and shutdown change caused by NoEscape
+REG DELETE HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v UseDefaultTile /f>nul 2>&1
+REG DELETE "HKCU\Control Panel\Mouse" /v SwapMouseButtons /f>nul 2>&1
+REG DELETE HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v shutdownwithoutlogon /f>nul 2>&1
