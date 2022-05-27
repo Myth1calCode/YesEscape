@@ -18,3 +18,4 @@ REG DELETE "HKCU\Control Panel\Mouse" /v SwapMouseButtons /f>nul 2>&1
 REG DELETE HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v shutdownwithoutlogon /f>nul 2>&1
 ::Restart the computer
 shutdown /r /t 0
+::Use BCPE to delete NoEscape?
